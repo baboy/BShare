@@ -173,11 +173,14 @@ NSString *SharePlatformQQ           = @"QQ";
     
     //添加QQ空间应用
     platform = [self confForApp:SharePlatformQZone withConfigs:platforms];
-    if (platform)
-        [ShareSDK connectQZoneWithAppKey:platform.appKey
+    if (platform){
+        [ShareSDK importQQClass:[QQApiInterface class]
+                tencentOAuthCls:[TencentOAuth class]];
+        [ShareSDK connectQZoneWithAppKey:platform.appId
                                appSecret:platform.appSecret
                        qqApiInterfaceCls:[QQApiInterface class]
                          tencentOAuthCls:[TencentOAuth class]];
+    }
     
     //添加搜狐微博应用
     platform = [self confForApp:SharePlatformSohuWeibo withConfigs:platforms];
@@ -254,9 +257,11 @@ NSString *SharePlatformQQ           = @"QQ";
     //在授权页面中添加关注官方微博
     
     [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"第X频道"],
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeUid value:@"2103273185"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"第X频道"],
+                                    //[ShareSDK userFieldWithType:SSUserFieldTypeName value:@"张斯特罗"],
+                                    //SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"张斯特罗"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     return authOptions;
@@ -296,6 +301,7 @@ NSString *SharePlatformQQ           = @"QQ";
     return YES;
 }
 + (void) shareOnPlatform:(NSArray *)platforms withTitle:(NSString *)title withUrl:(NSString *)url withContent:(NSString *)content withImagePath:(NSString *)imagePath callback:(void (^)(NSError *error))callback{
+    url = @"http://www.ucatv.com.cn";
     if (![platforms isKindOfClass:[NSArray class]]) {
         platforms = @[platforms];
     }
