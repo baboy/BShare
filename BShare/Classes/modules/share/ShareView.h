@@ -7,6 +7,9 @@
 //
 
 #import "ShareUtils.h"
+
+#define SharedNotify         @"shared-notify"
+
 @class ShareView;
 
 enum  {

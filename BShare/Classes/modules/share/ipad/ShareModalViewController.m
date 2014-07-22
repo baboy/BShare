@@ -209,6 +209,8 @@
                                    if (!error && !isSend) {
                                        isSend = YES;
                                        [self performSelector:@selector(didSend) withObject:nil afterDelay:1.0];
+                                       NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:self.sharePlatform.name, @"name", nil];
+                                       [[NSNotificationCenter defaultCenter] postNotificationName:SharedNotify object:self userInfo:userInfo];
                                    }
                                }
                            }];

@@ -188,6 +188,10 @@
                       withImagePath:imagePath
                            callback:^(NSError *error) {
                                DLOG(@"Share error:%@", error);
+                               if (!error) {
+                                   NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:self.sharePlatform.name, @"name", nil];
+                                   [[NSNotificationCenter defaultCenter] postNotificationName:SharedNotify object:self userInfo:userInfo];
+                               }
                            }];
     }
     if (shouldCancel) {
