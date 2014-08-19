@@ -28,7 +28,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
-- (void)shareWithTitle:(NSString *)title withUrl:(NSString *)url withContent:(NSString *)content withImagePath:(NSString *)imagePath{
+- (void)shareWithTitle:(NSString *)title withContent:(NSString *)content withUrl:(NSString *)url withImagePath:(NSString *)imagePath{
     SharePlatformView *sharePlatformView = [SharePlatformView sharePlatformView];
     [sharePlatformView setAutoShare:YES];
     [sharePlatformView setShareContent:content];
@@ -38,8 +38,11 @@
     [sharePlatformView show];
 
 }
+- (void)shareWithContent:(NSString *)content withUrl:(NSString *)url withImagePath:(NSString *)imagePath{
+    [self shareWithTitle:nil withContent:content withUrl:url withImagePath:imagePath];
+}
 - (void)shareWithContent:(NSString *)content withImagePath:(NSString *)imagePath{
-    [self shareWithTitle:nil withUrl:nil withContent:content withImagePath:imagePath];
+    [self shareWithTitle:nil withContent:content withUrl:nil withImagePath:imagePath];
 }
 - (void)commentWithPlaceholders:(NSString *)placeholders{
     ShareView *shareView = [ShareView shareView];
@@ -50,5 +53,4 @@
     [shareView setShareViewType:ShareViewTypeComment];
     [shareView show];
 }
-
 @end
