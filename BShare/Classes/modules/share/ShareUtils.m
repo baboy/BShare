@@ -301,7 +301,6 @@ NSString *SharePlatformQQ           = @"QQ";
     return YES;
 }
 + (void) shareOnPlatform:(NSArray *)platforms withTitle:(NSString *)title withUrl:(NSString *)url withContent:(NSString *)content withImagePath:(NSString *)imagePath callback:(void (^)(NSError *error))callback{
-    url = @"http://www.ucatv.com.cn";
     if (![platforms isKindOfClass:[NSArray class]]) {
         platforms = @[platforms];
     }
