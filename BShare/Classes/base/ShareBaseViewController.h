@@ -11,6 +11,7 @@
 @interface ShareBaseViewController : BaseViewController<ShareViewDelegate>
 @property (nonatomic, assign) BOOL canPullBack;
 - (void)shareWithContent:(NSString *)content withImagePath:(NSString *)imagePath;
-- (void)shareWithTitle:(NSString *)title withUrl:(NSString *)url withContent:(NSString *)content withImagePath:(NSString *)imagePath;
+- (void)shareWithTitle:(NSString *)title withContent:(NSString *)content withUrl:(NSString *)url withImagePath:(NSString *)imagePath;
+- (void)shareWithContent:(NSString *)content withUrl:(NSString *)url withImagePath:(NSString *)imagePath;
 - (void)commentWithPlaceholders:(NSString *)placeholders;
 @end
