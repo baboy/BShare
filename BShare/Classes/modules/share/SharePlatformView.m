@@ -76,12 +76,32 @@
     float padding = (contentViewFrame.size.width - numOfLine*SHARE_ICON_WIDTH)/(numOfLine+1);
     NSArray *sharePlatforms = [ShareUtils platforms];
     int n = [sharePlatforms count];
+    
+    CGRect rect_title = CGRectMake(0, 0, contentViewFrame.size.width, 40);
+    UILabel *titleLabel = createLabel(rect_title, [UIFont systemFontOfSize:18], [UIColor clearColor], [UIColor blackColor], nil, CGSizeZero, NSTextAlignmentCenter, 0, 0);
+    titleLabel.text = @"分 享";
+    [self.contentView addSubview:titleLabel];
+    
+    CGRect rect_line1 = CGRectMake(0, 0, contentViewFrame.size.width, 1);
+    UIImageView *line1 = [[UIImageView alloc] initWithFrame:rect_line1];
+    line1.image = [UIImage imageNamed:@"hline"];
+    line1.backgroundColor = [UIColor clearColor];
+    line1.contentMode = UIViewContentModeTop;
+    [self.contentView addSubview:line1];
+    
+    CGRect rect_line2 = CGRectMake(0, rect_title.size.height-1, contentViewFrame.size.width, 1);
+    UIImageView *line2 = [[UIImageView alloc] initWithFrame:rect_line2];
+    line2.image = [UIImage imageNamed:@"hline"];
+    line2.backgroundColor = [UIColor clearColor];
+    line2.contentMode = UIViewContentModeBottom;
+    [self.contentView addSubview:line2];
+    
     CGRect rect = CGRectMake(0, 0, SHARE_ICON_WIDTH, SHARE_ICON_WIDTH+20);
     NSMutableArray *shareViews = [NSMutableArray arrayWithCapacity:3];
     for (int i = 0; i < n; i++) {
         int line = i/numOfLine;
         int column = i%numOfLine;
-        rect = CGRectMake(column*(rect.size.width+padding)+padding, line*(rect.size.height+10)+padding, rect.size.width, rect.size.height);
+        rect = CGRectMake(column*(rect.size.width+padding)+padding, line*(rect.size.height)+50, rect.size.width, rect.size.height);
         
         SharePlatform *platform = [sharePlatforms objectAtIndex:i];
         BImageView *iconView = /*AUTORELEASE*/([[BImageView alloc] initWithFrame:rect]);
@@ -98,11 +118,19 @@
     self.shareViews = shareViews;
     UIButton *cancelBtn = [Theme buttonForStyle:@"shareplatform-cancel"
                                       withTitle:NSLocalizedString(@"取 消", nil)
-                                          frame:CGRectMake(10, rect.origin.y + rect.size.height + 10, contentViewFrame.size.width-20, 36)
+                                          frame:CGRectMake(0, rect.origin.y+rect.size.height+10, contentViewFrame.size.width, 44)
                                          target:self
                                          action:@selector(cancel:)];
     [self.contentView addSubview:cancelBtn];
-    contentViewFrame.size.height = cancelBtn.frame.origin.y + cancelBtn.frame.size.height + 10;
+    
+    CGRect rect_line3 = CGRectMake(0, cancelBtn.frame.origin.y, contentViewFrame.size.width, 1);
+    UIImageView *line3 = [[UIImageView alloc] initWithFrame:rect_line3];
+    line3.image = [UIImage imageNamed:@"hline"];
+    line3.backgroundColor = [UIColor clearColor];
+    line3.contentMode = UIViewContentModeTop;
+    [self.contentView addSubview:line3];
+    
+    contentViewFrame.size.height = cancelBtn.frame.origin.y + cancelBtn.frame.size.height;
     contentViewFrame.origin.y = self.frame.size.height - contentViewFrame.size.height;
     self.contentView.frame = contentViewFrame;
     [self addSubview:self.contentView];

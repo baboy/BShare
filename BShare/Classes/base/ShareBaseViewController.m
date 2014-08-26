@@ -41,9 +41,10 @@
 - (void)shareWithContent:(NSString *)content withImagePath:(NSString *)imagePath{
     [self shareWithTitle:nil withUrl:nil withContent:content withImagePath:imagePath];
 }
-- (void)commentWithPlaceholders:(NSString *)placeholders{
+
+- (void)commentWithPlaceholders:(NSString *)placeholders {
     ShareView *shareView = [ShareView shareView];
-    [shareView setTitle:NSLocalizedString(@"评论", nil)];
+    [shareView setTitle:NSLocalizedString(@"写评论", nil)];
     [shareView setDelegate:self];
     [shareView setShowCountLabel:YES];
     [shareView setMaxTextLength:MaxCommentTextLength];
