@@ -8,6 +8,7 @@
 
 #import "ShareBaseViewController.h"
 
+#define MaxCommentTextLength     140
 
 @interface ShareBaseViewController ()
 

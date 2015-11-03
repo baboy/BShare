@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 tvie. All rights reserved.
 //
 
-#import "AppBaseViewController.h"
+//#import "AppBaseViewController.h"
 #import "SharePlatformView.h"
 #import "UIPopoverCustomBackgroundView.h"
 
@@ -17,7 +17,7 @@
 - (void)sharePlatformPopoverController:(SharePlatformPopoverController*)controller didSelectedSharePlatform:(SharePlatform *)platform;
 @end
 
-@interface SharePlatformPopoverController : AppBaseViewController
+@interface SharePlatformPopoverController : BaseViewController
 @property (nonatomic, strong) UIPopoverController *popover;
 @property (nonatomic, assign) BOOL autoShare;
 @property (nonatomic, strong) NSString *shareImagePath;
