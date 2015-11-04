@@ -7,7 +7,6 @@
 //
 
 #import "SharePlatformPopoverController.h"
-#import "SlidingNavigationController.h"
 #import "ShareModalViewController.h"
 
 @interface SharePlatformPopoverController ()
@@ -74,7 +73,7 @@
         vc.imagePath = self.shareImagePath;
         vc.shareTitle = self.shareTitle;
         vc.content = self.shareContent;
-        SlidingNavigationController *nav = [[SlidingNavigationController alloc] initWithRootViewController:vc];
+        XUINavigationController *nav = [[XUINavigationController alloc] initWithRootViewController:vc];
         nav.modalPresentationStyle = UIModalPresentationFormSheet;
         [self presentModalViewController:nav animated:YES];
     }

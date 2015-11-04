@@ -72,7 +72,7 @@
     self.contentView = /*AUTORELEASE*/([[UIView alloc] initWithFrame:contentViewFrame]);
     self.contentView.backgroundColor = [Theme colorForKey:@"shareplatform-view-background"];
     self.contentView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
-    int numOfLine = 4;
+    int numOfLine = 3;
     float padding = (contentViewFrame.size.width - numOfLine*SHARE_ICON_WIDTH)/(numOfLine+1);
     NSArray *sharePlatforms = [ShareUtils platforms];
     int n = [sharePlatforms count];
@@ -154,7 +154,7 @@
                          self.contentView.frame = frame;
                          
                          CGAffineTransform transform = CGAffineTransformMakeScale(  0.97,  0.97 );
-                         [[APPRootController view] setTransform:transform];
+                         [[APPWindowRootController view] setTransform:transform];
                      }
                      completion:^(BOOL finished) {
                          
@@ -192,7 +192,7 @@
                          self.contentView.frame = frame;
                          
                          CGAffineTransform transform = CGAffineTransformMakeScale(  1.0,  1.0 );
-                         [[APPRootController view] setTransform:transform];
+                         [[APPWindowRootController view] setTransform:transform];
                      }
                      completion:^(BOOL finished) {
                          [self removeFromSuperview];

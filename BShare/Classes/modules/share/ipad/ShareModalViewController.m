@@ -174,8 +174,7 @@
     if ( !imagePath || ( !isURL(imagePath) && ![imagePath fileExists]) ) {
         return;
     }
-    NSURL *imageURL = isURL(imagePath) ? [NSURL URLWithString:imagePath] : [NSURL fileURLWithPath:imagePath];
-    [self.imageView setImageURL:imageURL];
+    [self.imageView setImageURLString:imagePath];
 }
 - (IBAction)send:(id)sender{
     NSString *content = self.textView.text;

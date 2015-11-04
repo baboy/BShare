@@ -112,8 +112,7 @@
     if ( !imagePath || ( !isURL(imagePath) && ![imagePath fileExists]) ) {
         return;
     }
-    NSURL *imageURL = isURL(imagePath) ? [NSURL URLWithString:imagePath] : [NSURL fileURLWithPath:imagePath];
-    [self.imageView setImageURL:imageURL];
+    [self.imageView setImageURLString:imagePath];
 }
 - (void)layout{
     CGRect containerFrame = self.container.frame;
@@ -226,7 +225,7 @@
 	self.container.frame = containerFrame;
     self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
     CGAffineTransform transform = CGAffineTransformMakeScale(  0.97,  0.97 );
-    [[APPRootController view] setTransform:transform];
+    [[APPWindowRootController view] setTransform:transform];
 	
 	// commit animations
 	[UIView commitAnimations];
@@ -241,7 +240,7 @@
                          self.container.frame = frame;
                          
                          CGAffineTransform transform = CGAffineTransformMakeScale(  1.0,  1.0 );
-                         [[APPRootController view] setTransform:transform];
+                         [[APPWindowRootController view] setTransform:transform];
                      }
                      completion:^(BOOL finished) {
                          [self removeFromSuperview];

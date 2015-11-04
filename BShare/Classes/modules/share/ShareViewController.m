@@ -90,8 +90,7 @@
     if ( !imagePath || ( !isURL(imagePath) && ![imagePath fileExists]) ) {
         return;
     }
-    NSURL *imageURL = isURL(imagePath) ? [NSURL URLWithString:imagePath] : [NSURL fileURLWithPath:imagePath];
-    [self.imageView setImageURL:imageURL];
+    [self.imageView setImageURLString:imagePath];
 }
 - (void)layout{
     CGRect textViewWrapperFrame = CGRectInset(self.container.bounds, 10, 10);
